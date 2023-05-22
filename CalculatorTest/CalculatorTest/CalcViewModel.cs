@@ -9,9 +9,13 @@ namespace CalculatorTest
     class CalcViewModel:INotifyPropertyChanged
     {
         private CalcModel _calcModel;
+        private  Parser _parser = new Parser();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ICommand AddNumber { get; set; }
+        public ICommand Calculate { get; set; }
+        public ICommand AddOperation { get; set; }
         public string ParseStr { get=>_calcModel.StringParse; 
             set 
             { 
@@ -22,7 +26,19 @@ namespace CalculatorTest
                 }
             }
         }
-        public ICommand AddNumber { get; set; }
+        public string ResultParsing
+        {
+            get => _calcModel.ResultParse;
+            set 
+            {
+                if(_calcModel.ResultParse!= value)
+                {
+                    _calcModel.ResultParse = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ResultParsing)));
+                }
+            }
+        }
+      
         public CalcViewModel()
         {
             _calcModel = new CalcModel 
@@ -31,10 +47,23 @@ namespace CalculatorTest
                 StringParse = "" 
             };
             AddNumber = new Command<string>(AddNumbers);
+            Calculate = new Command(DoCalculte);
+            AddOperation = new Command<string>(AddOper);
         }
         private void AddNumbers(string number)
         {
             ParseStr += number;
+        }
+        private void AddOper(string Operation)
+        {
+            if ("+-/*".Contains(ParseStr[ParseStr.Length - 1].ToString()))
+                return;
+            ParseStr += Operation;
+        }
+        private void DoCalculte()
+        {
+            ParseStr = _parser.StartParsing(ParseStr).ToString();
+            Console.WriteLine("fdsfd");
         }
     }
 }
