@@ -7,7 +7,7 @@ using System.Text;
        S->E
        E->E+T | E-T | T
        T->T*M | T/M | M
-       M->(E) | C | F(E)
+       M->(E) | C | F(E) | E%
        F->sin | cos | sqrt
      */
 

@@ -2,16 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:CalculatorTest="clr-namespace:CalculatorTest"
              x:DataType="CalculatorTest:CalcViewModel"
-      
              x:Class="CalculatorTest.MainPage">
-
-    
-   <!-- <StackLayout>
-        <Button x:Name="Button1" x:DataType="CalculatorTest:CalcViewModel" Command="{Binding  AddNumber}"
-                CommandParameter="{Binding Source={x:Reference Button1 }, Path=Text}" Text="1"/>
-        <Label x:DataType="CalculatorTest:CalcViewModel" Text="{Binding  ParseStr}"/>
-    </StackLayout>
-    -->
     
     <Grid Margin="10,0,10,0" VerticalOptions="EndAndExpand">
         
@@ -30,36 +21,81 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label HorizontalOptions="End" FontSize="Body" Text="{Binding  ParseStr}" 
+        <Label HorizontalOptions="End" FontSize="Body" 
+               Text="{Binding  ParseStr}" 
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
 
-        <Button Grid.Row="1" Grid.Column="0" Text="C"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Text="#"></Button>
-        <Button Grid.Row="1" Grid.Column="2" Text="%"></Button>
-        <Button Grid.Row="1" Grid.Column="3" Text="/"></Button>
+        <Button Grid.Row="1" Grid.Column="0" 
+                Command="{Binding Clear}" Text="C"/>
+        
+        <Button Grid.Row="1" Grid.Column="1" 
+                Command="{Binding  DeleteOneCharacter}" Text="#"/>
+        
+        <Button Grid.Row="1" Grid.Column="2" Text="%"/>
+        <Button x:Name="ButtonDiv" Grid.Row="1" Grid.Column="3" 
+                Command="{Binding AddOperation}"
+                CommandParameter="{Binding Source={x:Reference ButtonDiv }, Path=Text}"
+                Text="/"/>
 
         <Button  x:Name="Button7" Grid.Row="2" 
                 Grid.Column="0" Command="{Binding  AddNumber}"
-                CommandParameter="{Binding Source={x:Reference Button7 }, Path=Text}" Text="7" />
+                CommandParameter="{Binding Source={x:Reference Button7 }, Path=Text}" 
+                 Text="7" />
+        
         <Button x:Name="Button8"  Grid.Row="2" Grid.Column="1" Command="{Binding  AddNumber}"
-                CommandParameter="{Binding Source={x:Reference Button8 }, Path=Text}" Text="8"/>
+                CommandParameter="{Binding Source={x:Reference Button8 }, Path=Text}" 
+                Text="8"/>
+        
         <Button x:Name="Button9"  Grid.Row="2" Grid.Column="2" Command="{Binding  AddNumber}"
-                CommandParameter="{Binding Source={x:Reference Button9 }, Path=Text}" Text="9"/>
-        <Button Grid.Row="2" Grid.Column="3" Text="*"/>
-
-        <Button Grid.Row="3" Grid.Column="0" Text="4" />
-        <Button Grid.Row="3" Grid.Column="1" Text="5"/>
-        <Button Grid.Row="3" Grid.Column="2" Text="6"/>
-        <Button Grid.Row="3" Grid.Column="3" Text="-"/>
-
-        <Button Grid.Row="4" Grid.Column="0" Text="1"/>
-        <Button Grid.Row="4" Grid.Column="1" Text="2"/>
-        <Button Grid.Row="4" Grid.Column="2" Text="3"/>
-        <Button x:Name="ButtonEqual" Grid.Row="4" Grid.Column="3" 
+                CommandParameter="{Binding Source={x:Reference Button9 }, Path=Text}" 
+                Text="9"/>
+        
+        <Button x:Name="ButtonMul" Grid.Row="2" Grid.Column="3"
                 Command="{Binding AddOperation}"
-                CommandParameter="{Binding Source={x:Reference ButtonEqual }, Path=Text}" Text="+"/>
+                CommandParameter="{Binding Source={x:Reference ButtonMul }, Path=Text}" 
+                Text="*"/>
 
-        <Button Grid.Row="5" Grid.Column="0" Text="0" Grid.ColumnSpan="2"/>
+        <Button x:Name="Button4" Grid.Row="3" Grid.Column="0" Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button4 }, Path=Text}" Text="4" />
+        
+        <Button  x:Name="Button5" Grid.Row="3" Grid.Column="1" 
+                 Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button5 }, Path=Text}" 
+                 Text="5"/>
+        
+        <Button x:Name="Button6"  Grid.Row="3" Grid.Column="2" 
+                Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button6 }, Path=Text}" 
+                Text="6"/>
+        
+        <Button x:Name="ButtonSub" Grid.Row="3" Grid.Column="3" 
+                Command="{Binding AddOperation}"
+                CommandParameter="{Binding Source={x:Reference ButtonSub }, Path=Text}" 
+                Text="-"/>
+
+        <Button x:Name="Button1" Grid.Row="4" 
+                Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button1 }, Path=Text}" 
+                Grid.Column="0" Text="1"/>
+        
+        <Button x:Name="Button2" Grid.Row="4" 
+                Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button2 }, Path=Text}"
+                Grid.Column="1" Text="2"/>
+        
+        <Button x:Name="Button3" Grid.Row="4" 
+                Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button3 }, Path=Text}" 
+                Grid.Column="2" Text="3"/>
+        
+        <Button x:Name="ButtonSum" Grid.Row="4" Grid.Column="3" 
+                Command="{Binding AddOperation}"
+                CommandParameter="{Binding Source={x:Reference ButtonSum }, Path=Text}" Text="+"/>
+
+        <Button x:Name="Button0" Grid.Row="5" 
+                Command="{Binding  AddNumber}"
+                CommandParameter="{Binding Source={x:Reference Button0 }, Path=Text}" 
+                Grid.Column="0"  Text="0" Grid.ColumnSpan="2"/>
         <Button Grid.Row="5" Grid.Column="2" Text=","/>
         <Button Grid.Row="5" Grid.Column="3" Text="=" Command="{Binding Calculate}"/>
     </Grid>

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTest.Android", "CalculatorTest\CalculatorTest.Android\CalculatorTest.Android.csproj", "{A833C365-5A47-42FE-929D-0D17E316FFDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTest", "CalculatorTest\CalculatorTest\CalculatorTest.csproj", "{ECED48DD-D197-4369-A68D-10372C68D4CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorTest", "CalculatorTest\CalculatorTest\CalculatorTest.csproj", "{ECED48DD-D197-4369-A68D-10372C68D4CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
